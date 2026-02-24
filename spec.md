@@ -1,16 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Build a conversational AI chat application with a rule-based backend and a sleek futuristic dark-mode UI.
+**Goal:** Fix the backend AI response logic so the assistant returns meaningful, contextually relevant gaming-related replies instead of echoing the user's input.
 
 **Planned changes:**
-- Backend actor stores conversation history (role, content, timestamp) in stable storage
-- Backend exposes functions to send a message, receive a rule-based/pattern-matching response, retrieve history, and clear history
-- Chat UI displays messages in a thread with user messages right-aligned and AI messages left-aligned
-- Animated typing indicator shown while awaiting a response
-- "Clear conversation" button resets chat history
-- Message thread auto-scrolls to the latest message
-- Futuristic dark-mode theme: near-black background, neon green/cyan accents, modern monospaced or sans-serif font, subtle glow effects on AI bubbles and active inputs
-- AI avatar icon displayed alongside assistant messages
+- Update the backend simulated AI handler to generate varied, helpful responses based on the content of the user's message (e.g., gaming tips, recommendations, answers to gaming questions)
+- Ensure the assistant never mirrors or repeats the user's input verbatim
+- Preserve conversation history storage, typing indicator behavior, and the existing chat interface
 
-**User-visible outcome:** Users can type messages and receive contextual AI-style responses in a sleek sci-fi chat interface, with full conversation history persisted and the ability to clear the chat at any time.
+**User-visible outcome:** When a user sends a message to the gaming assistant, they receive a relevant and helpful reply instead of seeing their own message copied back to them.

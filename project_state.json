@@ -1,11 +1,12 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
+  "projectStateVersion": 5,
   "summary": "Build an AI project",
   "architectural_notes": [],
-  "known_issues": [],
-  "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Futuristic glowing AI avatar icon with circuit-board patterns and neon green/cyan color scheme on a dark background (ai-avatar.dim_128x128.png)",
+  "known_issues": [
+    "AI echoes/copies user input instead of generating real responses"
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
       "id": "feature-create-a-chat-ui-with-a-message-thread-display-a-text-input-field-and-a-send-button-messages-from-the-user-should-appear-on-the-right-side-and-ai-responses-on-the-left-side-show-a-typing-indicator-while-awaiting-a-response-allow-users-to-clear-the-conversation",
@@ -36,6 +37,20 @@
       "summary": "Build a conversational AI chat interface where users can type messages and receive simulated AI responses. The backend should store conversation history (messages with roles 'user' and 'assistant', timestamps) in stable storage and expose methods to send a message and retrieve conversation history.",
       "reqIds": [
         "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Fix the AI so it stops echoing/copying user input and instead provides real, meaningful responses to user commands and questions.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Fix the backend AI response logic so that when a user sends a message, the assistant returns a meaningful, contextually relevant response instead of echoing or copying the user's input back to them. The simulated AI should produce varied, helpful replies appropriate to a gaming assistant context (e.g., tips, suggestions, answers to gaming questions) rather than repeating what the user typed.",
+      "reqIds": [
+        "REQ-4"
       ],
       "status": "pending"
     }
