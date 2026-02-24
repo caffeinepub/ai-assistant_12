@@ -1,0 +1,80 @@
+{
+  "kind": "build_request",
+  "title": "AI Chat Assistant Application",
+  "projectName": "AI Assistant",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Build a conversational AI chat interface where users can type messages and receive simulated AI responses. The backend should store conversation history (messages with roles 'user' and 'assistant', timestamps) in stable storage and expose methods to send a message and retrieve conversation history.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "Can you make me an ai"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend actor exposes a function to submit a user message and receive a response string",
+        "Conversation history is persisted in stable storage as an array of message records with role, content, and timestamp fields",
+        "Backend exposes a function to retrieve full conversation history",
+        "A basic rule-based or pattern-matching response engine generates contextual replies to common inputs (greetings, questions about topics, etc.)"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Create a chat UI with a message thread display, a text input field, and a send button. Messages from the user should appear on the right side and AI responses on the left side. Show a typing indicator while awaiting a response. Allow users to clear the conversation.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "Can you make me an ai"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Chat thread displays all messages in chronological order with user messages right-aligned and AI messages left-aligned",
+        "Text input field and send button are visible at the bottom of the screen",
+        "A animated typing indicator appears while waiting for the backend response",
+        "A 'Clear conversation' button resets the chat history",
+        "The message thread auto-scrolls to the latest message"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Apply a sleek, futuristic dark-mode visual theme with deep charcoal/near-black backgrounds, neon green or cyan accent colors for AI elements, clean monospaced or sans-serif typography, subtle glowing effects on active components, and a consistent sci-fi aesthetic throughout the UI.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The app uses a dark background (near-black or deep charcoal) as the primary background color",
+        "AI message bubbles and interactive elements use a neon green or cyan accent color",
+        "Typography is clean and readable using a modern sans-serif or monospaced font",
+        "Subtle glow or gradient effects are applied to active inputs and AI response bubbles",
+        "The theme is applied consistently across all pages and components"
+      ]
+    }
+  ],
+  "constraints": [
+    "No integration with external AI APIs (OpenAI, Anthropic, etc.) — all response logic must run on-chain in the Motoko backend",
+    "All Motoko logic must remain in a single actor in backend/main.mo"
+  ],
+  "nonGoals": [
+    "Integration with real LLM or AI model APIs",
+    "User authentication or personalized conversation history per user",
+    "Voice input or text-to-speech output",
+    "Multi-language support"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Futuristic glowing AI avatar icon with circuit-board patterns and neon green/cyan color scheme on a dark background (ai-avatar.dim_128x128.png)"
+    ],
+    "edits": []
+  }
+}

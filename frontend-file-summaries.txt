@@ -1,0 +1,11 @@
+{
+  "frontend/src/index.css": "Global styles establishing a futuristic dark theme with OKLCH color tokens, Space Grotesk/Space Mono fonts, neon green/cyan accent utilities, custom scrollbar, and keyframe animations for typing dots, glow pulses, and fade-in effects.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending the theme with Space Grotesk/Mono fonts, neon color tokens, custom neon glow box-shadow utilities, and standard shadcn/ui color mappings.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching conversation history, sending messages via the backend actor, and clearing local conversation state.",
+  "frontend/src/hooks/useChat.ts": "Custom hook managing chat state including optimistic user messages, typing indicator state, send/clear actions, and composition of backend query hooks.",
+  "frontend/src/components/TypingIndicator.tsx": "Animated three-dot typing indicator component with AI avatar, neon green styling, and staggered dot bounce animation shown while awaiting AI response.",
+  "frontend/src/components/MessageBubble.tsx": "Individual message bubble component rendering user messages right-aligned and AI messages left-aligned with timestamps, neon glow effects, and fade-in animation.",
+  "frontend/src/components/ChatInput.tsx": "Auto-resizing textarea input with send button, Enter-to-send support, disabled state during AI response, and neon green focus/hover effects.",
+  "frontend/src/components/ChatInterface.tsx": "Main chat layout component composing the header, scrollable message thread, typing indicator, empty state with prompt suggestions, input bar, and footer.",
+  "frontend/src/App.tsx": "Root application component that renders the ChatInterface as the sole view."
+}

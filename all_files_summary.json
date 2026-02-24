@@ -1,0 +1,20 @@
+{
+  "backend/main.mo": "Motoko actor that stores a conversation history of user/assistant messages and exposes functions to send a message (returning a simulated AI response) and retrieve the full history.",
+  "feature_evidence.json": "Feature evidence report mapping two implemented features—the chat UI and the futuristic dark-mode theme—to their associated source files, components, and test IDs.",
+  "frontend-file-summaries.txt": "JSON document providing one-sentence summaries of each frontend source file, serving as a quick reference for the project's frontend structure.",
+  "frontend/index.css": "Defines Tailwind base styles and OKLCH CSS custom properties for light and dark color themes used throughout the shadcn/ui component system.",
+  "frontend/index.html": "Minimal HTML entry point that mounts the React app into a root div and loads the main TypeScript module.",
+  "frontend/src/App.tsx": "Root React component that renders the ChatInterface as the sole view of the application.",
+  "frontend/src/components/ChatInput.tsx": "Auto-resizing textarea input component with a send button, Enter-to-send keyboard support, and neon green focus/hover styling.",
+  "frontend/src/components/ChatInterface.tsx": "Main chat layout component composing the header, scrollable message thread, typing indicator, empty state, input bar, and clear-conversation button.",
+  "frontend/src/components/MessageBubble.tsx": "Renders individual chat messages with user messages right-aligned and AI messages left-aligned, including timestamps and neon glow styling.",
+  "frontend/src/components/TypingIndicator.tsx": "Displays an animated three-dot typing indicator with the AI avatar and neon green staggered bounce animation while awaiting a response.",
+  "frontend/src/hooks/useActor.ts": "React Query hook that creates and caches an authenticated or anonymous backend actor, invalidating dependent queries whenever the identity changes.",
+  "frontend/src/hooks/useChat.ts": "Custom hook managing chat state with optimistic user messages, typing indicator, send/clear actions, and composition of backend query hooks.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides a React context and hook for Internet Identity authentication, managing login/logout state and persisting identity via AuthClient.",
+  "frontend/src/hooks/useQueries.ts": "Defines React Query hooks for fetching conversation history, sending messages, and clearing local conversation state via the backend actor.",
+  "frontend/src/index.css": "Global stylesheet importing Space Grotesk/Mono fonts, defining Tailwind base layers, dark-mode CSS custom properties, and neon glow utility classes.",
+  "frontend/src/main.tsx": "Application entry point that mounts the React app wrapped with QueryClientProvider and InternetIdentityProvider.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration extending the theme with custom fonts, oklch-based color tokens, neon box-shadow utilities, and animation keyframes.",
+  "project_state.json": "Tracks project metadata, existing features, and pending feature requests for an AI Assistant chat application built on ICP."
+}
