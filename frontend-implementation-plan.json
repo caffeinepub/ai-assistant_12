@@ -1,6 +1,46 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Fix AI response logic to stop echoing user input",
-  "requirements": []
+  "title": "AI Game Builder – Generate Playable Mini-Games via Chat",
+  "requirements": [
+    {
+      "id": "REQ-2",
+      "summary": "Render embedded interactive games inside AI message bubbles when the backend returns a game payload",
+      "acceptanceCriteria": [
+        "Game responses render an embedded, playable game inside the chat bubble area.",
+        "The game area has a clear title or label (e.g., the game name).",
+        "Keyboard and/or mouse controls work within the embedded game.",
+        "Non-game messages continue to render as plain text bubbles with no changes.",
+        "The embedded game fits within the chat layout without breaking the scroll or overflow of the message list."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/MessageBubble.tsx",
+          "operation": "modify",
+          "description": "Detect the presence of a gamePayload field in the Message object. When present, render an embedded game sandbox (using an iframe with srcdoc or a canvas-based renderer) within the AI message bubble. Display a visible title or 'Play Game' label above the game area. Ensure keyboard and mouse events are captured by the embedded game. Keep non-game messages rendering as plain text bubbles unchanged. Ensure the embedded game area fits within the chat layout without breaking scroll or overflow."
+        },
+        {
+          "path": "frontend/src/components/GameRenderer.tsx",
+          "operation": "create",
+          "description": "Create a new React component that takes a game payload string and renders it inside an iframe sandbox or canvas element. The component should parse the game payload, set up the sandbox environment with appropriate security attributes (e.g., sandbox='allow-scripts'), and handle keyboard/mouse input forwarding if needed. Include error boundaries to gracefully handle malformed payloads."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add gaming-themed prompt suggestions to the empty-state UI hinting at the game-building capability",
+      "acceptanceCriteria": [
+        "At least three new game-building suggestion chips appear in the empty-state prompt area.",
+        "Clicking a suggestion pre-fills the chat input with that prompt.",
+        "Suggestions are styled consistently with the existing neon-green gaming theme."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ChatInterface.tsx",
+          "operation": "modify",
+          "description": "Add at least three new gaming-themed prompt suggestion chips to the empty-state UI, such as 'Build me a Snake game', 'Create a Pong game', and 'Make a memory card game'. Ensure clicking each suggestion pre-fills the chat input with that prompt text. Style the new suggestions consistently with the existing neon-green gaming theme and layout."
+        }
+      ]
+    }
+  ]
 }

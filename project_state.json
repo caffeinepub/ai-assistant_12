@@ -1,24 +1,22 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
-  "summary": "Build an AI project",
+  "projectStateVersion": 3,
+  "summary": "A chat app where users talk to an AI about video games, with a new feature to have the AI build/generate games.",
   "architectural_notes": [],
-  "known_issues": [
-    "AI echoes/copies user input instead of generating real responses"
-  ],
-  "isFixRequest": true,
+  "known_issues": [],
+  "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-create-a-chat-ui-with-a-message-thread-display-a-text-input-field-and-a-send-button-messages-from-the-user-should-appear-on-the-right-side-and-ai-responses-on-the-left-side-show-a-typing-indicator-while-awaiting-a-response-allow-users-to-clear-the-conversation",
-      "title": "Create a chat UI with a message thread display, a text input field, and a send button. Messages from the user should appear on the right side and AI responses on the left side. Show a typing indicator while awaiting a response. Allow users to clear the conversation.",
+      "id": "feature-update-the-frontend-chatinterface-and-messagebubble-components-to-detect-game-payload-responses-and-render-an-interactive-game-directly-inside-the-chat-window-the-game-should-appear-in-an-embedded-sandbox-e-g-an-iframe-with-srcdoc-or-a-canvas-based-renderer-within-the-ai-message-bubble-include-a-visible-play-game-label-or-title-above-the-game-area-and-allow-the-user-to-interact-with-the-game-without-leaving-the-chat",
+      "title": "Update the frontend ChatInterface and MessageBubble components to detect game-payload responses and render an interactive game directly inside the chat window. The game should appear in an embedded sandbox (e.g., an iframe with srcdoc or a canvas-based renderer) within the AI message bubble. Include a visible 'Play Game' label or title above the game area, and allow the user to interact with the game without leaving the chat.",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
     },
     {
-      "id": "feature-apply-a-sleek-futuristic-dark-mode-visual-theme-with-deep-charcoal-near-black-backgrounds-neon-green-or-cyan-accent-colors-for-ai-elements-clean-monospaced-or-sans-serif-typography-subtle-glowing-effects-on-active-components-and-a-consistent-sci-fi-aesthetic-throughout-the-ui",
-      "title": "Apply a sleek, futuristic dark-mode visual theme with deep charcoal/near-black backgrounds, neon green or cyan accent colors for AI elements, clean monospaced or sans-serif typography, subtle glowing effects on active components, and a consistent sci-fi aesthetic throughout the UI.",
+      "id": "feature-add-gaming-themed-prompt-suggestions-in-the-empty-state-ui-chatinterface-tsx-that-hint-at-the-game-building-capability-such-as-build-me-a-snake-game-create-a-pong-game-and-make-a-memory-card-game-so-users-discover-this-feature-naturally",
+      "title": "Add gaming-themed prompt suggestions in the empty-state UI (ChatInterface.tsx) that hint at the game-building capability, such as 'Build me a Snake game', 'Create a Pong game', and 'Make a memory card game', so users discover this feature naturally.",
       "reqIds": [
         "REQ-3"
       ],
@@ -28,35 +26,20 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Create an AI application",
+      "summary": "AI can build/generate games for the user",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-2",
-      "summary": "Build a conversational AI chat interface where users can type messages and receive simulated AI responses. The backend should store conversation history (messages with roles 'user' and 'assistant', timestamps) in stable storage and expose methods to send a message and retrieve conversation history.",
+      "summary": "Extend the backend chat actor to detect when the user asks the AI to build or generate a game. When detected, the AI must return a structured response containing a self-contained playable mini-game (e.g., Snake, Pong, Memory Match, Breakout, or similar simple arcade game) encoded as an HTML/JS payload or a structured game definition that the frontend can render. The response must include a special marker or metadata field (e.g., a gamePayload field alongside the text message) so the frontend can distinguish game responses from regular chat.",
       "reqIds": [
         "REQ-1"
       ],
       "status": "pending"
-    },
-    {
-      "id": "AR-3",
-      "summary": "Fix the AI so it stops echoing/copying user input and instead provides real, meaningful responses to user commands and questions.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-4",
-      "summary": "Fix the backend AI response logic so that when a user sends a message, the assistant returns a meaningful, contextually relevant response instead of echoing or copying the user's input back to them. The simulated AI should produce varied, helpful replies appropriate to a gaming assistant context (e.g., tips, suggestions, answers to gaming questions) rather than repeating what the user typed.",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "status": "pending"
     }
   ],
-  "gameProjectType": "none",
-  "projectName": "AI Assistant",
+  "projectName": "GameChat AI",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

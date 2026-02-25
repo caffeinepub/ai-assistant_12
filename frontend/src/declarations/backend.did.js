@@ -13,6 +13,7 @@ export const Message = IDL.Record({
   'content' : IDL.Text,
   'role' : IDL.Text,
   'timestamp' : Time,
+  'gamePayload' : IDL.Opt(IDL.Text),
 });
 
 export const idlService = IDL.Service({
@@ -28,6 +29,7 @@ export const idlFactory = ({ IDL }) => {
     'content' : IDL.Text,
     'role' : IDL.Text,
     'timestamp' : Time,
+    'gamePayload' : IDL.Opt(IDL.Text),
   });
   
   return IDL.Service({

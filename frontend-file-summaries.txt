@@ -4,8 +4,9 @@
   "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching conversation history, sending messages via the backend actor, and clearing local conversation state.",
   "frontend/src/hooks/useChat.ts": "Custom hook managing chat state including optimistic user messages, typing indicator state, send/clear actions, and composition of backend query hooks.",
   "frontend/src/components/TypingIndicator.tsx": "Animated three-dot typing indicator component with AI avatar, neon green styling, and staggered dot bounce animation shown while awaiting AI response.",
-  "frontend/src/components/MessageBubble.tsx": "Individual message bubble component rendering user messages right-aligned and AI messages left-aligned with timestamps, neon glow effects, and fade-in animation.",
+  "frontend/src/components/MessageBubble.tsx": "Message bubble component that now detects the presence of a `gamePayload` field on AI messages and renders the `GameRenderer` component inline within the bubble; user messages and plain AI text messages are unchanged.",
   "frontend/src/components/ChatInput.tsx": "Auto-resizing textarea input with send button, Enter-to-send support, disabled state during AI response, and neon green focus/hover effects.",
-  "frontend/src/components/ChatInterface.tsx": "Main chat layout component composing the header, scrollable message thread, typing indicator, empty state with prompt suggestions, input bar, and footer.",
-  "frontend/src/App.tsx": "Root application component that renders the ChatInterface as the sole view."
+  "frontend/src/components/ChatInterface.tsx": "Main chat layout with a new two-section empty state: a highlighted \"Build a Game\" section with six game-building suggestion chips (Snake, Pong, Memory, Breakout, Flappy, Tetris) styled with brighter neon-green, plus the existing gaming info prompts below; subtitle updated to mention game-building capability.",
+  "frontend/src/App.tsx": "Root application component that renders the ChatInterface as the sole view.",
+  "frontend/src/components/GameRenderer.tsx": "New component that renders self-contained playable mini-games (Snake, Pong, Memory, Breakout, Flappy Bird, Tetris) inside a sandboxed iframe by parsing the backend's gamePayload JSON and generating full HTML/JS game code client-side; includes expand/collapse toggle and error handling."
 }

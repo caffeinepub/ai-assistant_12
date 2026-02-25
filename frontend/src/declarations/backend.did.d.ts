@@ -14,6 +14,7 @@ export interface Message {
   'content' : string,
   'role' : string,
   'timestamp' : Time,
+  'gamePayload' : [] | [string],
 }
 export type Time = bigint;
 export interface _SERVICE {

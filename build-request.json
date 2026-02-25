@@ -1,40 +1,77 @@
 {
   "kind": "build_request",
-  "title": "Fix AI response logic to stop echoing user input",
+  "title": "AI Game Builder – Generate Playable Mini-Games via Chat",
+  "projectName": "GameChat AI",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-4",
-      "text": "Fix the backend AI response logic so that when a user sends a message, the assistant returns a meaningful, contextually relevant response instead of echoing or copying the user's input back to them. The simulated AI should produce varied, helpful replies appropriate to a gaming assistant context (e.g., tips, suggestions, answers to gaming questions) rather than repeating what the user typed.",
+      "id": "REQ-1",
+      "text": "Extend the backend chat actor to detect when the user asks the AI to build or generate a game. When detected, the AI must return a structured response containing a self-contained playable mini-game (e.g., Snake, Pong, Memory Match, Breakout, or similar simple arcade game) encoded as an HTML/JS payload or a structured game definition that the frontend can render. The response must include a special marker or metadata field (e.g., a gamePayload field alongside the text message) so the frontend can distinguish game responses from regular chat.",
       "target": "backend",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "When i command it to do something it just copies me",
-          "Can you make it do what i whant",
-          "Yes"
+          "Can you make the ai build games"
         ]
       },
       "acceptanceCriteria": [
-        "Sending any message to the AI never results in a response that simply repeats or mirrors the user's input verbatim.",
-        "The AI returns a distinct, meaningful reply for common gaming-related inputs (e.g., asking for tips, game recommendations, or help with a specific game).",
-        "The AI response varies based on the content of the user's message rather than always returning a generic or copied reply.",
-        "Conversation history continues to be stored correctly with both user and assistant messages.",
-        "The typing indicator still appears while the response is being generated."
+        "When the user sends a message like 'build me a game', 'make a Snake game', or similar, the backend returns a response with a non-empty game payload.",
+        "Regular chat messages are unaffected and continue to return normal text responses.",
+        "The game payload is a complete, self-contained implementation that requires no external dependencies.",
+        "The backend stores game responses in conversation history with appropriate metadata."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Update the frontend ChatInterface and MessageBubble components to detect game-payload responses and render an interactive game directly inside the chat window. The game should appear in an embedded sandbox (e.g., an iframe with srcdoc or a canvas-based renderer) within the AI message bubble. Include a visible 'Play Game' label or title above the game area, and allow the user to interact with the game without leaving the chat.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Can you make the ai build games"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Game responses render an embedded, playable game inside the chat bubble area.",
+        "The game area has a clear title or label (e.g., the game name).",
+        "Keyboard and/or mouse controls work within the embedded game.",
+        "Non-game messages continue to render as plain text bubbles with no changes.",
+        "The embedded game fits within the chat layout without breaking the scroll or overflow of the message list."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add gaming-themed prompt suggestions in the empty-state UI (ChatInterface.tsx) that hint at the game-building capability, such as 'Build me a Snake game', 'Create a Pong game', and 'Make a memory card game', so users discover this feature naturally.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Can you make the ai build games"
+        ]
+      },
+      "acceptanceCriteria": [
+        "At least three new game-building suggestion chips appear in the empty-state prompt area.",
+        "Clicking a suggestion pre-fills the chat input with that prompt.",
+        "Suggestions are styled consistently with the existing neon-green gaming theme."
       ]
     }
   ],
   "constraints": [
-    "Do not change the existing conversation history data model or backend storage schema.",
-    "Do not modify any immutable frontend paths (hooks/useInternetIdentity.ts, hooks/useActor.ts, main.tsx, components/ui).",
-    "Preserve the existing futuristic dark-mode visual theme and neon styling."
+    "Do not modify any files listed under frontend.immutablePaths.",
+    "All Motoko logic must remain in the single backend/main.mo actor.",
+    "Generated game payloads must be self-contained and require no external network requests or third-party APIs."
   ],
   "nonGoals": [
-    "Integrating a real external AI/LLM API.",
-    "Adding new UI features or redesigning the chat interface.",
-    "Changing authentication or identity logic."
+    "Multiplayer or networked games.",
+    "Saving or persisting game scores to the backend.",
+    "3D games or games requiring large asset downloads.",
+    "An external game marketplace or library browsing feature."
   ],
   "imageRequirements": {
     "required": [],

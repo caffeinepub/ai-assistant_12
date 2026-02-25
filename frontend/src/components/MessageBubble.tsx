@@ -1,4 +1,5 @@
 import type { Message } from '../backend';
+import { GameRenderer } from './GameRenderer';
 
 interface MessageBubbleProps {
     message: Message;
@@ -13,6 +14,7 @@ function formatTime(timestamp: bigint): string {
 
 export function MessageBubble({ message, index }: MessageBubbleProps) {
     const isUser = message.role === 'user';
+    const hasGame = !isUser && !!message.gamePayload;
 
     if (isUser) {
         return (
@@ -47,9 +49,12 @@ export function MessageBubble({ message, index }: MessageBubbleProps) {
                     className="w-full h-full object-cover"
                 />
             </div>
-            <div className="flex flex-col items-start gap-1 max-w-[75%]">
-                <div className="px-4 py-3 rounded-2xl rounded-tl-sm bg-card border border-neon-green/20 shadow-neon-green-sm text-foreground text-sm leading-relaxed">
+            <div className={`flex flex-col items-start gap-1 ${hasGame ? 'max-w-[90%] w-full' : 'max-w-[75%]'}`}>
+                <div className={`px-4 py-3 rounded-2xl rounded-tl-sm bg-card border border-neon-green/20 shadow-neon-green-sm text-foreground text-sm leading-relaxed ${hasGame ? 'w-full' : ''}`}>
                     {message.content}
+                    {hasGame && message.gamePayload && (
+                        <GameRenderer gamePayload={message.gamePayload} />
+                    )}
                 </div>
                 <span className="text-xs text-muted-foreground font-mono px-1">
                     {formatTime(message.timestamp)}

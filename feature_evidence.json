@@ -1,4 +1,42 @@
 {
   "kind": "feature_evidence_report",
-  "features": []
+  "features": [
+    {
+      "featureId": "feature-update-the-frontend-chatinterface-and-messagebubble-components-to-detect-game-payload-responses-and-render-an-interactive-game-directly-inside-the-chat-window-the-game-should-appear-in-an-embedded-sandbox-e-g-an-iframe-with-srcdoc-or-a-canvas-based-renderer-within-the-ai-message-bubble-include-a-visible-play-game-label-or-title-above-the-game-area-and-allow-the-user-to-interact-with-the-game-without-leaving-the-chat",
+      "featureTitle": "Update the frontend ChatInterface and MessageBubble components to detect game-payload responses and render an interactive game directly inside the chat window. The game should appear in an embedded sandbox (e.g., an iframe with srcdoc or a canvas-based renderer) within the AI message bubble. Include a visible 'Play Game' label or title above the game area, and allow the user to interact with the game without leaving the chat.",
+      "files": [
+        "frontend/src/components/GameRenderer.tsx",
+        "frontend/src/components/MessageBubble.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-gaming-themed-prompt-suggestions-in-the-empty-state-ui-chatinterface-tsx-that-hint-at-the-game-building-capability-such-as-build-me-a-snake-game-create-a-pong-game-and-make-a-memory-card-game-so-users-discover-this-feature-naturally",
+      "featureTitle": "Add gaming-themed prompt suggestions in the empty-state UI (ChatInterface.tsx) that hint at the game-building capability, such as 'Build me a Snake game', 'Create a Pong game', and 'Make a memory card game', so users discover this feature naturally.",
+      "files": [
+        "frontend/src/components/ChatInterface.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    }
+  ]
 }
