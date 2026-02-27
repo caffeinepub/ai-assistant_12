@@ -1,22 +1,22 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "A chat app where users talk to an AI about video games, with a new feature to have the AI build/generate games.",
+  "summary": "Project where an AI assistant is capable of generating playable video games for users.",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-update-the-frontend-chatinterface-and-messagebubble-components-to-detect-game-payload-responses-and-render-an-interactive-game-directly-inside-the-chat-window-the-game-should-appear-in-an-embedded-sandbox-e-g-an-iframe-with-srcdoc-or-a-canvas-based-renderer-within-the-ai-message-bubble-include-a-visible-play-game-label-or-title-above-the-game-area-and-allow-the-user-to-interact-with-the-game-without-leaving-the-chat",
-      "title": "Update the frontend ChatInterface and MessageBubble components to detect game-payload responses and render an interactive game directly inside the chat window. The game should appear in an embedded sandbox (e.g., an iframe with srcdoc or a canvas-based renderer) within the AI message bubble. Include a visible 'Play Game' label or title above the game area, and allow the user to interact with the game without leaving the chat.",
+      "id": "feature-update-the-gamerenderer-component-to-handle-a-broader-range-of-dynamically-generated-games-beyond-the-six-currently-hardcoded-ones-the-renderer-should-render-any-valid-self-contained-html-game-payload-received-from-the-backend-not-just-the-six-predefined-types-snake-pong-memory-breakout-flappy-bird-tetris",
+      "title": "Update the GameRenderer component to handle a broader range of dynamically generated games beyond the six currently hardcoded ones. The renderer should render any valid self-contained HTML game payload received from the backend, not just the six predefined types (Snake, Pong, Memory, Breakout, Flappy Bird, Tetris).",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
     },
     {
-      "id": "feature-add-gaming-themed-prompt-suggestions-in-the-empty-state-ui-chatinterface-tsx-that-hint-at-the-game-building-capability-such-as-build-me-a-snake-game-create-a-pong-game-and-make-a-memory-card-game-so-users-discover-this-feature-naturally",
-      "title": "Add gaming-themed prompt suggestions in the empty-state UI (ChatInterface.tsx) that hint at the game-building capability, such as 'Build me a Snake game', 'Create a Pong game', and 'Make a memory card game', so users discover this feature naturally.",
+      "id": "feature-update-the-empty-state-prompt-suggestions-in-chatinterface-to-include-a-wider-variety-of-game-building-prompt-examples-that-reflect-the-expanded-ai-capability-such-as-make-me-a-platformer-game-create-a-space-shooter-build-a-tower-defense-game-and-make-a-puzzle-game",
+      "title": "Update the empty-state prompt suggestions in ChatInterface to include a wider variety of game-building prompt examples that reflect the expanded AI capability, such as 'Make me a platformer game', 'Create a space shooter', 'Build a tower defense game', and 'Make a puzzle game'.",
       "reqIds": [
         "REQ-3"
       ],
@@ -26,13 +26,13 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "AI can build/generate games for the user",
+      "summary": "Enable the AI to generate playable video games",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-2",
-      "summary": "Extend the backend chat actor to detect when the user asks the AI to build or generate a game. When detected, the AI must return a structured response containing a self-contained playable mini-game (e.g., Snake, Pong, Memory Match, Breakout, or similar simple arcade game) encoded as an HTML/JS payload or a structured game definition that the frontend can render. The response must include a special marker or metadata field (e.g., a gamePayload field alongside the text message) so the frontend can distinguish game responses from regular chat.",
+      "summary": "Extend the backend AI response logic in main.mo so that when a user asks the AI to create, build, or make a video game (of any genre or description), the AI generates a structured gamePayload containing a complete, self-contained HTML/CSS/JavaScript game that can be rendered in a sandboxed iframe. The game logic must be fully contained in a single HTML string with inline JS and CSS. The backend should detect game-creation intents broadly (e.g., 'make me a platformer', 'create a shooter', 'build a puzzle game', 'make a racing game', etc.) and respond with both a text message and a populated gamePayload field.",
       "reqIds": [
         "REQ-1"
       ],

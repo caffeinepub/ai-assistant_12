@@ -1,77 +1,79 @@
 {
   "kind": "build_request",
-  "title": "AI Game Builder – Generate Playable Mini-Games via Chat",
+  "title": "Enable AI to generate playable video games from user prompts",
   "projectName": "GameChat AI",
-  "priority": "normal",
+  "priority": "high",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Extend the backend chat actor to detect when the user asks the AI to build or generate a game. When detected, the AI must return a structured response containing a self-contained playable mini-game (e.g., Snake, Pong, Memory Match, Breakout, or similar simple arcade game) encoded as an HTML/JS payload or a structured game definition that the frontend can render. The response must include a special marker or metadata field (e.g., a gamePayload field alongside the text message) so the frontend can distinguish game responses from regular chat.",
+      "text": "Extend the backend AI response logic in main.mo so that when a user asks the AI to create, build, or make a video game (of any genre or description), the AI generates a structured gamePayload containing a complete, self-contained HTML/CSS/JavaScript game that can be rendered in a sandboxed iframe. The game logic must be fully contained in a single HTML string with inline JS and CSS. The backend should detect game-creation intents broadly (e.g., 'make me a platformer', 'create a shooter', 'build a puzzle game', 'make a racing game', etc.) and respond with both a text message and a populated gamePayload field.",
       "target": "backend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-5"
         ],
         "quotes": [
-          "Can you make the ai build games"
+          "MAKE THE AI CAPIBLE OF MAKING VIDEO GAMES"
         ]
       },
       "acceptanceCriteria": [
-        "When the user sends a message like 'build me a game', 'make a Snake game', or similar, the backend returns a response with a non-empty game payload.",
-        "Regular chat messages are unaffected and continue to return normal text responses.",
-        "The game payload is a complete, self-contained implementation that requires no external dependencies.",
-        "The backend stores game responses in conversation history with appropriate metadata."
+        "When a user sends a message requesting any type of video game, the backend returns a response with a non-null gamePayload containing valid HTML with inline JS and CSS.",
+        "The game is fully playable within a sandboxed iframe (no external dependencies required).",
+        "Game-creation intent detection covers a wide range of genres and phrasings beyond the six hardcoded games (Snake, Pong, etc.), including platformers, shooters, puzzle games, racing games, RPGs, and more.",
+        "The AI's text response acknowledges the game creation and provides brief instructions for how to play.",
+        "Non-game-related messages continue to return responses with a null gamePayload."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Update the frontend ChatInterface and MessageBubble components to detect game-payload responses and render an interactive game directly inside the chat window. The game should appear in an embedded sandbox (e.g., an iframe with srcdoc or a canvas-based renderer) within the AI message bubble. Include a visible 'Play Game' label or title above the game area, and allow the user to interact with the game without leaving the chat.",
+      "text": "Update the GameRenderer component to handle a broader range of dynamically generated games beyond the six currently hardcoded ones. The renderer should render any valid self-contained HTML game payload received from the backend, not just the six predefined types (Snake, Pong, Memory, Breakout, Flappy Bird, Tetris).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-5"
         ],
         "quotes": [
-          "Can you make the ai build games"
+          "MAKE THE AI CAPIBLE OF MAKING VIDEO GAMES"
         ]
       },
       "acceptanceCriteria": [
-        "Game responses render an embedded, playable game inside the chat bubble area.",
-        "The game area has a clear title or label (e.g., the game name).",
-        "Keyboard and/or mouse controls work within the embedded game.",
-        "Non-game messages continue to render as plain text bubbles with no changes.",
-        "The embedded game fits within the chat layout without breaking the scroll or overflow of the message list."
+        "GameRenderer successfully renders any self-contained HTML/JS/CSS payload returned by the backend, not just the six hardcoded game types.",
+        "The sandboxed iframe correctly loads and runs the injected HTML game code.",
+        "Expand/collapse functionality continues to work for all rendered games.",
+        "If the gamePayload is malformed or empty, the renderer handles the error gracefully without crashing."
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Add gaming-themed prompt suggestions in the empty-state UI (ChatInterface.tsx) that hint at the game-building capability, such as 'Build me a Snake game', 'Create a Pong game', and 'Make a memory card game', so users discover this feature naturally.",
+      "text": "Update the empty-state prompt suggestions in ChatInterface to include a wider variety of game-building prompt examples that reflect the expanded AI capability, such as 'Make me a platformer game', 'Create a space shooter', 'Build a tower defense game', and 'Make a puzzle game'.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-5"
         ],
         "quotes": [
-          "Can you make the ai build games"
+          "MAKE THE AI CAPIBLE OF MAKING VIDEO GAMES"
         ]
       },
       "acceptanceCriteria": [
-        "At least three new game-building suggestion chips appear in the empty-state prompt area.",
-        "Clicking a suggestion pre-fills the chat input with that prompt.",
-        "Suggestions are styled consistently with the existing neon-green gaming theme."
+        "The empty-state UI shows at least 4 varied game-building prompt suggestions covering different genres.",
+        "Clicking any suggestion pre-fills the chat input with that prompt.",
+        "Suggestions reflect genres beyond the six hardcoded games."
       ]
     }
   ],
   "constraints": [
-    "Do not modify any files listed under frontend.immutablePaths.",
-    "All Motoko logic must remain in the single backend/main.mo actor.",
-    "Generated game payloads must be self-contained and require no external network requests or third-party APIs."
+    "All Motoko logic must remain in the single main actor file (backend/main.mo).",
+    "Generated games must be fully self-contained HTML with inline JS and CSS — no external CDN or network requests.",
+    "Do not edit any files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui.",
+    "GameRenderer must continue to render inside a sandboxed iframe."
   ],
   "nonGoals": [
-    "Multiplayer or networked games.",
-    "Saving or persisting game scores to the backend.",
-    "3D games or games requiring large asset downloads.",
-    "An external game marketplace or library browsing feature."
+    "Server-side game execution or game state persistence.",
+    "Multiplayer or real-time game features.",
+    "User authentication or login for game access.",
+    "Saving or sharing generated games between sessions.",
+    "3D game generation."
   ],
   "imageRequirements": {
     "required": [],

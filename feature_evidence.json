@@ -2,11 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-frontend-chatinterface-and-messagebubble-components-to-detect-game-payload-responses-and-render-an-interactive-game-directly-inside-the-chat-window-the-game-should-appear-in-an-embedded-sandbox-e-g-an-iframe-with-srcdoc-or-a-canvas-based-renderer-within-the-ai-message-bubble-include-a-visible-play-game-label-or-title-above-the-game-area-and-allow-the-user-to-interact-with-the-game-without-leaving-the-chat",
-      "featureTitle": "Update the frontend ChatInterface and MessageBubble components to detect game-payload responses and render an interactive game directly inside the chat window. The game should appear in an embedded sandbox (e.g., an iframe with srcdoc or a canvas-based renderer) within the AI message bubble. Include a visible 'Play Game' label or title above the game area, and allow the user to interact with the game without leaving the chat.",
+      "featureId": "feature-update-the-gamerenderer-component-to-handle-a-broader-range-of-dynamically-generated-games-beyond-the-six-currently-hardcoded-ones-the-renderer-should-render-any-valid-self-contained-html-game-payload-received-from-the-backend-not-just-the-six-predefined-types-snake-pong-memory-breakout-flappy-bird-tetris",
+      "featureTitle": "Update the GameRenderer component to handle a broader range of dynamically generated games beyond the six currently hardcoded ones. The renderer should render any valid self-contained HTML game payload received from the backend, not just the six predefined types (Snake, Pong, Memory, Breakout, Flappy Bird, Tetris).",
       "files": [
-        "frontend/src/components/GameRenderer.tsx",
-        "frontend/src/components/MessageBubble.tsx"
+        "frontend/src/components/GameRenderer.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -21,8 +20,8 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-gaming-themed-prompt-suggestions-in-the-empty-state-ui-chatinterface-tsx-that-hint-at-the-game-building-capability-such-as-build-me-a-snake-game-create-a-pong-game-and-make-a-memory-card-game-so-users-discover-this-feature-naturally",
-      "featureTitle": "Add gaming-themed prompt suggestions in the empty-state UI (ChatInterface.tsx) that hint at the game-building capability, such as 'Build me a Snake game', 'Create a Pong game', and 'Make a memory card game', so users discover this feature naturally.",
+      "featureId": "feature-update-the-empty-state-prompt-suggestions-in-chatinterface-to-include-a-wider-variety-of-game-building-prompt-examples-that-reflect-the-expanded-ai-capability-such-as-make-me-a-platformer-game-create-a-space-shooter-build-a-tower-defense-game-and-make-a-puzzle-game",
+      "featureTitle": "Update the empty-state prompt suggestions in ChatInterface to include a wider variety of game-building prompt examples that reflect the expanded AI capability, such as 'Make me a platformer game', 'Create a space shooter', 'Build a tower defense game', and 'Make a puzzle game'.",
       "files": [
         "frontend/src/components/ChatInterface.tsx"
       ],

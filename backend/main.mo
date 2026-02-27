@@ -5,9 +5,9 @@ import Char "mo:core/Char";
 import Nat "mo:core/Nat";
 import Nat32 "mo:core/Nat32";
 import Iter "mo:core/Iter";
-import Migration "migration";
 
-(with migration = Migration.run)
+
+
 actor {
   type Message = {
     role : Text;
@@ -92,6 +92,33 @@ actor {
     if (containsAny(request, ["pong", "arcade"])) {
       return ?"{ \"gameType\": \"pong\", \"payload\": \"...html/js data...\" }";
     };
+
+    // New checks for generic game creation requests
+    if (
+      containsAny(
+        request,
+        [
+          "create game",
+          "make game",
+          "build game",
+          "design game",
+          "develop game",
+          "platformer",
+          "shooter",
+          "puzzle",
+          "racing",
+          "adventure game",
+          "arcade",
+          "strategy game",
+          "rpg game",
+        ],
+      )
+    ) {
+      let sampleGameHtml = "<!DOCTYPE html><html><head><meta charset=\\\"UTF-8\\\"><title>Sample Platformer</title><style>body{background:#222;color:#fff;font-family:sans-serif;text-align:center;}canvas{margin:20px auto;display:block;background:#444;border:2px solid #fff;}#controls{margin-top:20px;}button{padding:10px 20px;font-size:16px;background:#555;color:#fff;border:none;cursor:pointer;margin:0 10px;}p{font-size:18px;}</style></head><body><h1>Sample Platformer</h1><canvas id=\\\"gameCanvas\\\" width=\\\"400\\\" height=\\\"300\\\"></canvas><p>Use Arrow Keys or WASD to Move</p><div id=\\\"controls\\\"><button id=\\\"resetBtn\\\">Reset</button></div><script>const canvas=document.getElementById(\\\"gameCanvas\\\");const ctx=canvas.getContext(\\\"2d\\\");const gravity=0.5;let player={x:50,y:240,w:30,h:30,velX:0,velY:0,jumping:false};const platforms=[{x:0,y:270,w:400,h:30},{x:120,y:200,w:100,h:20},{x:250,y:150,w:80,h:15},{x:70,y:100,w:60,h:13}];const keys={left:false,right:false,up:false};function drawPlayer(){ctx.fillStyle=\\\"#00c8f8\\\";ctx.fillRect(player.x,player.y,player.w,player.h);}function drawPlatforms(){ctx.fillStyle=\\\"#8bd700\\\";platforms.forEach(p=>{ctx.fillRect(p.x,p.y,p.w,p.h);});}function drawFlag(){ctx.fillStyle=\\\"#ffeb3b\\\";ctx.beginPath();ctx.arc(370,110,15,0,Math.PI*2);ctx.fill();ctx.fillStyle=\\\"#666\\\";ctx.fillRect(365,110,10,40);}function updatePlayer(){if(keys.left)player.velX=-3;if(keys.right)player.velX=3;if(!keys.left&&!keys.right)player.velX*=0.8;if(player.velX>8)player.velX=8;if(player.velX<-8)player.velX=-8;player.x+=player.velX;player.velY+=gravity;player.y+=player.velY;if(player.x<0)player.x=0;if(player.x+player.w>canvas.width)player.x=canvas.width-player.w;if(player.y+player.h>canvas.height){player.y=canvas.height-player.h;player.velY=0;player.jumping=false;}}function checkCollisions(){platforms.forEach(p=>{if(player.x+player.w>p.x&&player.x<p.x+p.w&&player.y+player.h>p.y&&player.y<p.y+p.h){player.y=p.y-player.h;player.velY=0;player.jumping=false;}});}function isOnGround(){let onGround=false;platforms.forEach(p=>{if(player.x+player.w>p.x&&player.x<p.x+p.w&&player.y+player.h>p.y&&player.y+player.h<p.y+10){onGround=true;}});return onGround;}function checkFlag(){if(player.x+player.w>355&&player.y+player.h>85&&player.y<125){player.x=40;player.y=230;player.velX=0;player.velY=0;player.jumping=false;document.body.style.backgroundColor=\\\"#ffd600\\\";setTimeout(()=>{document.body.style.backgroundColor=\\\"#222\\\";},1000);}}function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);drawPlatforms();drawFlag();drawPlayer();updatePlayer();checkCollisions();checkFlag();requestAnimationFrame(animate);}function handleKeyDown(e){switch(e.key){case\\\"ArrowLeft\\\":case\\\"a\\\":case\\\"A\\\":keys.left=true;break;case\\\"ArrowRight\\\":case\\\"d\\\":case\\\"D\\\":keys.right=true;break;case\\\"ArrowUp\\\":case\\\"w\\\":case\\\"W\\\":if(isOnGround()&&!player.jumping){player.velY=-9;player.jumping=true;}break;}}function handleKeyUp(e){switch(e.key){case\\\"ArrowLeft\\\":case\\\"a\\\":case\\\"A\\\":keys.left=false;break;case\\\"ArrowRight\\\":case\\\"d\\\":case\\\"D\\\":keys.right=false;break;}}function handleReset(){player.x=50;player.y=240;player.velX=0;player.velY=0;player.jumping=false;}document.addEventListener(\\\"keydown\\\",handleKeyDown);document.addEventListener(\\\"keyup\\\",handleKeyUp);document.getElementById(\\\"resetBtn\\\").addEventListener(\\\"click\\\",handleReset);animate();</script></body></html>";
+
+      return ?("{ \\\"gameType\\\": \\\"platformer\\\", \\\"payload\\\": \\\"" # sampleGameHtml # "\\\" }");
+    };
+
     null;
   };
 

@@ -16,12 +16,14 @@ const GAMING_PROMPTS = [
 ];
 
 const GAME_BUILD_PROMPTS = [
-    'Build me a Snake game',
+    'Make me a platformer game',
+    'Create a space shooter game',
+    'Build a tower defense game',
+    'Make a puzzle game',
+    'Create a racing game',
+    'Build an RPG adventure game',
+    'Make a Snake game',
     'Create a Pong game',
-    'Make a memory card game',
-    'Build a Breakout game',
-    'Make a Flappy Bird game',
-    'Build a Tetris game',
 ];
 
 export function ChatInterface() {
@@ -97,7 +99,7 @@ export function ChatInterface() {
                                     Hey, I'm GameChat AI!
                                 </h2>
                                 <p className="text-sm text-muted-foreground max-w-xs">
-                                    Your expert guide to all things video games — tips, strategies, recommendations, and more. I can also <span className="text-neon-green font-semibold">build playable mini-games</span> for you!
+                                    Your expert guide to all things video games — tips, strategies, recommendations, and more. I can <span className="text-neon-green font-semibold">build any playable game</span> you can imagine!
                                 </p>
                             </div>
 

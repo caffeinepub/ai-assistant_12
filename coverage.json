@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-25T16:42:49.628Z",
+  "generatedAt": "2026-02-26T20:09:16.066Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -12,27 +12,25 @@
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Extend the backend chat actor to detect when the user asks the AI to build or generate a game. When detected, the AI must return a structured response containing a self-contained playable mini-game (e.g., Snake, Pong, Memory Match, Breakout, or similar simple arcade game) encoded as an HTML/JS payload or a structured game definition that the frontend can render. The response must include a special marker or metadata field (e.g., a gamePayload field alongside the text message) so the frontend can distinguish game responses from regular chat.",
+        "summary": "Extend the backend AI response logic in main.mo so that when a user asks the AI to create, build, or make a video game (of any genre or description), the AI generates a structured gamePayload containing a complete, self-contained HTML/CSS/JavaScript game that can be rendered in a sandboxed iframe. The game logic must be fully contained in a single HTML string with inline JS and CSS. The backend should detect game-creation intents broadly (e.g., 'make me a platformer', 'create a shooter', 'build a puzzle game', 'make a racing game', etc.) and respond with both a text message and a populated gamePayload field.",
         "status": "unknown",
         "plannedFiles": [],
         "matchedFiles": []
       },
       {
         "id": "REQ-2",
-        "summary": "Update the frontend ChatInterface and MessageBubble components to detect game-payload responses and render an interactive game directly inside the chat window. The game should appear in an embedded sandbox (e.g., an iframe with srcdoc or a canvas-based renderer) within the AI message bubble. Include a visible 'Play Game' label or title above the game area, and allow the user to interact with the game without leaving the chat.",
+        "summary": "Update the GameRenderer component to handle a broader range of dynamically generated games beyond the six currently hardcoded ones. The renderer should render any valid self-contained HTML game payload received from the backend, not just the six predefined types (Snake, Pong, Memory, Breakout, Flappy Bird, Tetris).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/MessageBubble.tsx",
           "frontend/src/components/GameRenderer.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/MessageBubble.tsx",
           "frontend/src/components/GameRenderer.tsx"
         ]
       },
       {
         "id": "REQ-3",
-        "summary": "Add gaming-themed prompt suggestions in the empty-state UI (ChatInterface.tsx) that hint at the game-building capability, such as 'Build me a Snake game', 'Create a Pong game', and 'Make a memory card game', so users discover this feature naturally.",
+        "summary": "Update the empty-state prompt suggestions in ChatInterface to include a wider variety of game-building prompt examples that reflect the expanded AI capability, such as 'Make me a platformer game', 'Create a space shooter', 'Build a tower defense game', and 'Make a puzzle game'.",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/components/ChatInterface.tsx"
@@ -45,18 +43,14 @@
   },
   "changedFiles": [
     "backend/main.mo",
-    "backend/migration.mo",
     "build-request.json",
+    "build-template/README.md",
+    "caffeine.lock.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/backend.d.ts",
-    "frontend/src/backend.ts",
     "frontend/src/components/ChatInterface.tsx",
     "frontend/src/components/GameRenderer.tsx",
-    "frontend/src/components/MessageBubble.tsx",
-    "frontend/src/declarations/backend.did.d.ts",
-    "frontend/src/declarations/backend.did.js",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",
